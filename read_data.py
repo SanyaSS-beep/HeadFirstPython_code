@@ -17,19 +17,10 @@ def read_data():
     clean_mikey = []
     clean_sarah = []
 
-    for each_t in james:
-        clean_james.append(sanitize(each_t))
-    for each_t in julie:
-        clean_julie.append(sanitize(each_t))
-    for each_t in mikey:
-        clean_mikey.append(sanitize(each_t))
-    for each_t in sarah:
-        clean_sarah.append(sanitize(each_t))
-
-    print(sorted(clean_james))
-    print(sorted(clean_julie))
-    print(sorted(clean_julie))
-    print(sorted(clean_sarah))
+    print(sorted([sanitize(t) for t in james]))
+    print(sorted([sanitize(t) for t in julie]))
+    print(sorted([sanitize(t) for t in mikey]))
+    print(sorted([sanitize(t) for t in sarah]))
 
 def sanitize(time_string):
     if '-' in time_string:
