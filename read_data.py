@@ -12,10 +12,10 @@ def read_data():
         data = saf.readline()
     sarah = data.strip().split(',')
 
-    print(james)
-    print(julie)
-    print(mikey)
-    print(sarah)
+    print(sorted(james))
+    print(sorted(julie))
+    print(sorted(mikey))
+    print(sorted(sarah))
 
 if __name__ == '__main__':
     read_data()
