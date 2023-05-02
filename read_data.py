@@ -4,29 +4,13 @@ def read_data():
     mikey = get_coach_data('./data/mikey2.txt')
     sarah = get_coach_data('./data/sarah2.txt')
 
-    james_data = {}
-    james_data['name'] = james.pop(0)
-    james_data['DOB'] = james.pop(0)
-    james_data['times'] = james
-    print(james_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in james_data['times']]))[0:3]))
+    print(james['name'] + "'s fastest times are: "+str(james['times']))
 
-    julie_data = {}
-    julie_data['name'] = julie.pop(0)
-    julie_data['DOB'] = julie.pop(0)
-    julie_data['times'] = julie    
-    print(julie_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in julie_data['times']]))[0:3]))
+    print(julie['name'] + "'s fastest times are: "+str(julie['times']))
     
-    mikey_data = {}
-    mikey_data['name'] = mikey.pop(0)
-    mikey_data['DOB'] = mikey.pop(0)
-    mikey_data['times'] = mikey
-    print(mikey_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in mikey_data['times']]))[0:3]))
+    print(mikey['name'] + "'s fastest times are: "+str(mikey['times']))
 
-    sarah_data = {}
-    sarah_data['name'] = sarah.pop(0)
-    sarah_data['DOB'] = sarah.pop(0)
-    sarah_data['times'] = sarah
-    print(sarah_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in sarah_data['times']]))[0:3]))
+    print(sarah['name'] + "'s fastest times are: "+str(sarah['times']))
 
 def sanitize(time_string):
     if '-' in time_string:
@@ -42,7 +26,12 @@ def get_coach_data(filename):
     try:
         with open(filename) as f:
             data = f.readline()
-        return(data.strip().split(','))
+        templ = data.strip().split(',')
+        return ({
+            'name': templ.pop(0),
+            'DOB': templ.pop(0),
+            'times': str(sorted(set([sanitize(t) for t in templ]))[0:3])
+        })
     except IOError as ioerr:
         print('File error:'+str(ioerr))
         return(None)
