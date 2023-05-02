@@ -4,18 +4,30 @@ def read_data():
     mikey = get_coach_data('./data/mikey2.txt')
     sarah = get_coach_data('./data/sarah2.txt')
 
-    (james_name, james_dob) = james.pop(0), james.pop(0)
-    print(james_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in james]))[0:3]))
-    
-    (julie_name, julie_dob) = julie.pop(0), julie.pop(0)
-    print(julie_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in julie]))[0:3]))
-    
-    (mikey_name, mikey_dob) = mikey.pop(0), mikey.pop(0)
-    print(mikey_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in mikey]))[0:3]))
+    james_data = {}
+    james_data['name'] = james.pop(0)
+    james_data['DOB'] = james.pop(0)
+    james_data['times'] = james
+    print(james_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in james_data['times']]))[0:3]))
 
-    (sarah_name, sarah_dob) = sarah.pop(0), sarah.pop(0)
-    print(sarah_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in sarah]))[0:3]))
+    julie_data = {}
+    julie_data['name'] = julie.pop(0)
+    julie_data['DOB'] = julie.pop(0)
+    julie_data['times'] = julie    
+    print(julie_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in julie_data['times']]))[0:3]))
     
+    mikey_data = {}
+    mikey_data['name'] = mikey.pop(0)
+    mikey_data['DOB'] = mikey.pop(0)
+    mikey_data['times'] = mikey
+    print(mikey_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in mikey_data['times']]))[0:3]))
+
+    sarah_data = {}
+    sarah_data['name'] = sarah.pop(0)
+    sarah_data['DOB'] = sarah.pop(0)
+    sarah_data['times'] = sarah
+    print(sarah_data['name'] + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in sarah_data['times']]))[0:3]))
+
 def sanitize(time_string):
     if '-' in time_string:
         splitter = '-'
