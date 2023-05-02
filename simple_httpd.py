@@ -1,7 +1,7 @@
 
 from http.server import HTTPServer, CGIHTTPRequestHandler
 
-port = 8080
+port = 7080
 
 httpd = HTTPServer(('', port), CGIHTTPRequestHandler)
 print("Starting simple_httpd on port: " + str(httpd.server_port))
