@@ -1,3 +1,6 @@
+import pickle
+
+
 def read_data():
     james = get_coach_data('./data/james2.txt')
     julie = get_coach_data('./data/julie2.txt')
@@ -41,6 +44,27 @@ class AthleteList(list):
     
     def top3(self):
         return (sorted(set([sanitize(t) for t in self]))[0:3])
+
+def put_to_store(files_list):
+    all_athletes = {}
+    for each_file in files_list:
+        ath = get_coach_data(each_file)
+        all_athletes[ath.name] = ath
+    try:
+        with open('athletes.pickle', 'wb') as athf:
+            pickle.dump(all_athletes, athf)
+    except IOError as ioerr:
+        print('File error(put and store):' + str(ioerr))
+    return(all_athletes)
+
+def get_from_store():
+    all_athlete = {}
+    try:
+        with open('athlete.pickle', 'rb') as athf:
+            all_athlete = pickle.load(athf)
+    except IOError as ioerr:
+        print('File error (get from store):' + str(ioerr))
+    return(all_athlete)
 
 if __name__ == '__main__':
     read_data()
