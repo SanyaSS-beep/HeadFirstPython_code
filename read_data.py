@@ -1,19 +1,11 @@
 def read_data():
-    with open('./data/james.txt') as jaf:
-        data = jaf.readline()
-    james = data.strip().split(',')
+    james = get_coach_data('./data/james.txt')
     james = sorted([sanitize(t) for t in james])
-    with open('./data/julie.txt') as juf:
-        data = juf.readline()
-    julie = data.strip().split(',')
+    julie = get_coach_data('./data/julie.txt')
     julie = sorted([sanitize(t) for t in julie])
-    with open('./data/mikey.txt') as mif:
-        data = mif.readline()
-    mikey = data.strip().split(',')
+    mikey = get_coach_data('./data/mikey.txt')
     mikey = sorted([sanitize(t) for t in mikey])
-    with open('./data/sarah.txt') as saf:
-        data = saf.readline()
-    sarah = data.strip().split(',')
+    sarah = get_coach_data('./data/sarah.txt')
     sarah = sorted([sanitize(t) for t in sarah])
 
     unique_james = []
@@ -49,6 +41,16 @@ def sanitize(time_string):
         return(time_string)
     (mins, secs) = time_string.split(splitter)
     return(mins + '.' + secs)
+
+def get_coach_data(filename):
+    try:
+        with open(filename) as f:
+            data = f.readline()
+        return(data.strip().split(','))
+    except IOError as ioerr:
+        print('File error:'+str(ioerr))
+        return(None)
+    
 
 if __name__ == '__main__':
     read_data()
