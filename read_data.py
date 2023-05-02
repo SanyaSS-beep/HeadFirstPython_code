@@ -1,13 +1,13 @@
 def read_data():
     james = get_coach_data('./data/james.txt')
-    james = sorted([sanitize(t) for t in james])
     julie = get_coach_data('./data/julie.txt')
-    julie = sorted([sanitize(t) for t in julie])
     mikey = get_coach_data('./data/mikey.txt')
-    mikey = sorted([sanitize(t) for t in mikey])
     sarah = get_coach_data('./data/sarah.txt')
+    
+    james = sorted([sanitize(t) for t in james])
+    julie = sorted([sanitize(t) for t in julie])
+    mikey = sorted([sanitize(t) for t in mikey])
     sarah = sorted([sanitize(t) for t in sarah])
-
     unique_james = []
     for each_t in james:
         if each_t not in unique_james:
