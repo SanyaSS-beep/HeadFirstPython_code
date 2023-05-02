@@ -27,25 +27,26 @@ def get_coach_data(filename):
         with open(filename) as f:
             data = f.readline()
         templ = data.strip().split(',')
-        return Athlete(templ.pop(0), templ.pop(0), templ)
+        return AthleteList(templ.pop(0), templ.pop(0), templ)
     except IOError as ioerr:
         print('File error:'+str(ioerr))
         return(None)
     
-class Athlete:
+class AthleteList(list):
     def __init__(self, a_name, a_dob=None, a_times=[]) -> None:
+        list.__init__([])
         self.name = a_name
         self.dob = a_dob
-        self.times = a_times
+        self.extend(a_times)
     
     def top3(self):
-        return (sorted(set([sanitize(t) for t in self.times]))[0:3])
+        return (sorted(set([sanitize(t) for t in self]))[0:3])
 
     def add_time(self, time_value):
         self.times.append(time_value)
 
     def add_times(self, list_of_times):
         self.times.extend(list_of_times)
-        
+
 if __name__ == '__main__':
     read_data()
