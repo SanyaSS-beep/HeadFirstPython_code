@@ -1,37 +1,21 @@
 def read_data():
-    james = get_coach_data('./data/james.txt')
-    julie = get_coach_data('./data/julie.txt')
-    mikey = get_coach_data('./data/mikey.txt')
-    sarah = get_coach_data('./data/sarah.txt')
+    james = get_coach_data('./data/james2.txt')
+    julie = get_coach_data('./data/julie2.txt')
+    mikey = get_coach_data('./data/mikey2.txt')
+    sarah = get_coach_data('./data/sarah2.txt')
+
+    (james_name, james_dob) = james.pop(0), james.pop(0)
+    print(james_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in james]))[0:3]))
     
-    james = sorted([sanitize(t) for t in james])
-    julie = sorted([sanitize(t) for t in julie])
-    mikey = sorted([sanitize(t) for t in mikey])
-    sarah = sorted([sanitize(t) for t in sarah])
-    unique_james = []
-    for each_t in james:
-        if each_t not in unique_james:
-            unique_james.append(each_t)
-    print(unique_james[0:3])
+    (julie_name, julie_dob) = julie.pop(0), julie.pop(0)
+    print(julie_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in julie]))[0:3]))
+    
+    (mikey_name, mikey_dob) = mikey.pop(0), mikey.pop(0)
+    print(mikey_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in mikey]))[0:3]))
 
-    unique_julie = []
-    for each_t in julie:
-        if each_t not in unique_julie:
-            unique_julie.append(each_t)
-    print(unique_julie[0:3])
-
-    unique_mikey = []
-    for each_t in mikey:
-        if each_t not in unique_mikey:
-            unique_mikey.append(each_t)
-    print(unique_mikey[0:3])
-
-    unique_sarah = []
-    for each_t in sarah:
-        if each_t not in unique_sarah:
-            unique_sarah.append(each_t)
-    print(unique_sarah[0:3])
-
+    (sarah_name, sarah_dob) = sarah.pop(0), sarah.pop(0)
+    print(sarah_name + "'s fastest times are: "+str(sorted(set([sanitize(t) for t in sarah]))[0:3]))
+    
 def sanitize(time_string):
     if '-' in time_string:
         splitter = '-'
