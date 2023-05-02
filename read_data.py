@@ -42,11 +42,5 @@ class AthleteList(list):
     def top3(self):
         return (sorted(set([sanitize(t) for t in self]))[0:3])
 
-    def add_time(self, time_value):
-        self.times.append(time_value)
-
-    def add_times(self, list_of_times):
-        self.times.extend(list_of_times)
-
 if __name__ == '__main__':
     read_data()
